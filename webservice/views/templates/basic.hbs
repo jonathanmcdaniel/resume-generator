@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <style>
+            html {
+                margin: 72pt;
+                font-size: 12pt;
+            }
+            body {
+                margin: 0;
+            }
+            h1,h2,h3,h4,h5,h6{
+                line-height: 0%;
+            }
+            h1{
+                font-size: 18pt;
+            }
+            h2 {
+                font-size: 16pt;
+                border-bottom: 1pt solid black;
+                padding-bottom: 10pt;
+            }
+            .biographics {
+                text-align: center;
+            }
+            .section {
+                margin-top: 36pt;
+            }
+            .item {
+                margin-top: 10pt;
+            }
+            .flex-container {
+                display: flex;
+            }
+            .flex-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: 0;
+                margin-top: 10pt;
+            }
+            .sub-item{
+                max-width: 50%;
+                width: 50%;
+            }
+            .text-right {
+                text-align: right;
+            }
+            .description {
+                margin-left: 20pt;
+            }
+            .skill {
+                width: 33%;
+                margin-bottom: 5pt;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="biographics">
+            <h1>{{name}}</h1>
+            <addr>
+                {{addr1}}<br/>
+                {{addr2}}<br>
+                {{city}}, {{state}}<br/>
+                {{email}}
+            </addr>
+        </div>
+        <div class="section">
+            <h2>Summary</h2>
+            {{summary}}
+        </div>
+        <div class="section">
+            <h2>Education</h2>
+            {{#each education as |edu|}}
+            <div class="item">
+                <div class="flex-container">
+                    <div class="sub-item">
+                        <strong>{{edu.name}}</strong><br/>
+                        {{edu.degree}}
+                    </div>
+                    <div class="sub-item text-right">
+                        {{city}}, {{state}}<br/>
+                        {{date}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="section">
+            <h2>Experience</h2>
+            {{#each experience as |job|}}
+            <div class="item">
+                <div class="flex-container">
+                    <div class="sub-item">
+                        <strong>{{job.title}}</strong><br/>
+                        <em>{{job.employer}}</em>
+                    </div>
+                    <div class="sub-item text-right">
+                        {{job.city}}, {{job.state}}<br/>
+                        {{job.startDate}} - {{job.endDate}}
+                    </div>
+                </div>
+                <div class="description">
+                    {{job.description}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="section">
+            <h2>Skills</h2>
+            <ul class="flex-container flex-list">
+                {{#each skills as |skill|}}
+                    <li class="skill">{{skill}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </body>
+</html>
