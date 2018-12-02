@@ -4,14 +4,100 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding class="grey-background">
+  <h1>Resume Information</h1>
+  <ion-card>
+    <ion-card-header>
+      Biographics
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Address Line 1</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Address Line 2</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>State</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Education
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item>
+          <ion-label floating>School Name</ion-label>
+          <ion-input type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>School City</ion-label>
+          <ion-input type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>School State</ion-label>
+          <ion-input type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Degree</ion-label>
+          <ion-input type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Date</ion-label>
+          <ion-input type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Experience
+    </ion-card-header>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Skills
+    </ion-card-header>
+    <ion-card-content>
+      Enter each skill, seperated by a comma.
+      <ion-item>
+        <ion-label floating>Skill(s)</ion-label>
+        <ion-input type="text" class="input-bottom-border"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Resume Template
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+          <ion-label>Choose Template</ion-label>
+          <ion-select>
+            <ion-option value="basic">Basic</ion-option>
+            <ion-option value="modern">Modern</ion-option>
+          </ion-select>
+        </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+  <button ion-button full>Generate Resume</button>
 </ion-content>
