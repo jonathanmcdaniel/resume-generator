@@ -5,6 +5,22 @@ const puppeteer = require('puppeteer');
 const fse = require('fs-extra');
 const hbs = require('handlebars');
 const path = require('path');
+var fs = require('fs');
+const uuidv4 = require('uuid/v4');
+
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
+if (typeof btoa === 'undefined') {
+    global.btoa = function (str) {
+        return new Buffer(str, 'binary').toString('base64');
+    };
+}
+
+if (typeof atob === 'undefined') {
+    global.atob = function (b64Encoded) {
+        return new Buffer(b64Encoded, 'base64').toString('binary');
+    };
+}
 
 const compileTemplate = async function(template, data) {
     const file = path.join(process.cwd(), 'views', 'templates', `${template}.hbs`);
@@ -40,15 +56,33 @@ router.post('/:templateName/:fileType', async function(req, res, next) {
     var resumeJson = req.body || {};
     try {
         if (fileType === 'html'){
+            res.writeHead(200, {'Content-Type': 'application/html'})
             var html = await compileTemplate(templateName, resumeJson);
             res.end(html);
-        } else if (fileType === 'pdf') {
+        } else if (fileType === 'pdf-online') {
             const data = await generatePdf(templateName, resumeJson);
-            res.writeHead(200, {'Content-Type': 'application/pdf'});
-            res.end(data, 'binary');
+            var fileName = uuidv4().toString();
+            var url = "public/" + fileName + ".pdf";
+            fs.writeFile(url, data,  "binary",function(err) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log("The file was saved!");
+                }
+            });
+            var jsonData = {
+                "pdfUrl": fileName + ".pdf"
+            }
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(jsonData));
         } else if (fileType === 'json'){
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(resumeJson));
+            const data = await generatePdf(templateName, resumeJson);
+            var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(data)));
+            var jsonData = {
+                "pdf": base64String
+            }
+            res.end(JSON.stringify(jsonData));
         } else {
             res.status(404).end('File type not found.');
         }

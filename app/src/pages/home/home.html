@@ -13,27 +13,33 @@
     <ion-card-content>
       <ion-item>
         <ion-label floating>Name</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-input [(ngModel)]="biographicData.name" clearInput="true" type="text" class="input-bottom-border"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Address Line 1</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-input [(ngModel)]="biographicData.addr1" clearInput="true" type="text" class="input-bottom-border"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Address Line 2</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-input [(ngModel)]="biographicData.addr2" clearInput="true" type="text" class="input-bottom-border"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>City</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-input [(ngModel)]="biographicData.city" clearInput="true" type="text" class="input-bottom-border"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>State</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-select [(ngModel)]="biographicData.state" class="input-bottom-border">
+          <ion-option *ngFor="let state of states" value="{{state.abbreviation}}">{{state.name}}</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label floating>Email</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-input [(ngModel)]="biographicData.email" clearInput="true" type="email" class="input-bottom-border"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Summary</ion-label>
+        <ion-input [(ngModel)]="biographicData.summary" clearInput="true" type="text" class="input-bottom-border"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -44,23 +50,25 @@
     <ion-card-content>
         <ion-item>
           <ion-label floating>School Name</ion-label>
-          <ion-input type="text" class="input-bottom-border"></ion-input>
+          <ion-input [(ngModel)]="educationData.name" clearInput="true" type="text" class="input-bottom-border"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>School City</ion-label>
-          <ion-input type="text" class="input-bottom-border"></ion-input>
+          <ion-input [(ngModel)]="educationData.city" clearInput="true" type="text" class="input-bottom-border"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>School State</ion-label>
-          <ion-input type="text" class="input-bottom-border"></ion-input>
+          <ion-select [(ngModel)]="educationData.state" class="input-bottom-border">
+            <ion-option *ngFor="let state of states" value="{{state.abbreviation}}">{{state.name}}</ion-option>
+          </ion-select>
         </ion-item>
         <ion-item>
           <ion-label floating>Degree</ion-label>
-          <ion-input type="text" class="input-bottom-border"></ion-input>
+          <ion-input [(ngModel)]="educationData.degree" clearInput="true" type="text" class="input-bottom-border"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Date</ion-label>
-          <ion-input type="text" class="input-bottom-border"></ion-input>
+          <ion-label fixed>Date</ion-label>
+          <ion-input [(ngModel)]="educationData.date" clearInput="true" type="date" class="input-bottom-border"></ion-input>
         </ion-item>
     </ion-card-content>
   </ion-card>
@@ -69,7 +77,36 @@
       Experience
     </ion-card-header>
     <ion-card-content>
-      
+        <ion-item>
+          <ion-label floating>Title</ion-label>
+          <ion-input [(ngModel)]="experienceData.title" clearInput="true" type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Employer</ion-label>
+          <ion-input [(ngModel)]="experienceData.employer" clearInput="true" type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-input [(ngModel)]="experienceData.city" clearInput="true" type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>State</ion-label>
+          <ion-select [(ngModel)]="experienceData.state" class="input-bottom-border">
+            <ion-option *ngFor="let state of states" value="{{state.abbreviation}}">{{state.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>Start Date</ion-label>
+          <ion-input [(ngModel)]="experienceData.startDate" clearInput="true" type="date" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>End Date</ion-label>
+          <ion-input [(ngModel)]="experienceData.endDate" clearInput="true" type="date" class="input-bottom-border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Description</ion-label>
+          <ion-input [(ngModel)]="experienceData.description" clearInput="true" type="text" class="input-bottom-border"></ion-input>
+        </ion-item>
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -80,7 +117,7 @@
       Enter each skill, seperated by a comma.
       <ion-item>
         <ion-label floating>Skill(s)</ion-label>
-        <ion-input type="text" class="input-bottom-border"></ion-input>
+        <ion-input [(ngModel)]="skillDataString" clearInput="true" type="text" class="input-bottom-border"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -91,13 +128,14 @@
     <ion-card-content>
       <ion-item>
           <ion-label>Choose Template</ion-label>
-          <ion-select>
+          <ion-select [(ngModel)]="resumeTemplate" class="input-bottom-border">
             <ion-option value="basic">Basic</ion-option>
-            <ion-option value="modern">Modern</ion-option>
+            <ion-option value="red">Red</ion-option>
           </ion-select>
         </ion-item>
     </ion-card-content>
   </ion-card>
   
-  <button ion-button full>Generate Resume</button>
+  <button ion-button full (click)="generateResume($event)">Generate Resume</button>
+  <button ion-button full (click)="viewResume($event)" *ngIf="pdfUrl">View Resume</button>
 </ion-content>
