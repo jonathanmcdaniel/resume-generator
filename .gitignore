@@ -1,6 +1,9 @@
 # Outputs
 *.pdf
 
+# OSX
+.DS_Store
+
 # Logs
 logs
 *.log

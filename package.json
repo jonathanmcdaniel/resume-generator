@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "run-p \"start --prefix app\" \"start --prefix webservice\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "download": "run-s \"download --prefix app\" \"download --prefix webservice\"",
+    "build": "npm install && npm run download",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-start": "npm install && npm run download && npm run start"
   },
   "repository": {
     "type": "git",
