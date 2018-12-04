@@ -31,3 +31,14 @@ Video Demo: **[insert link here]**
 ## Architectural Diagrams
 
 ## Screenshots
+### Data Collection Used in Generation
+![Full Data Collection Form](/images/screenshots/full_form.png)
+
+### Allow User to Choose Template Before Generation
+![Choose Resume Template](/images/screenshots/choose_template.PNG)
+
+### Basic Resume Template
+![Generated Resume Basic](/images/screenshots/generated_resume_basic.PNG)
+
+### Red Resume Template
+![Generated Resume Red](/images/screenshots/generated_resume_red.PNG)
