@@ -28,6 +28,6 @@ Video Demo: **[insert link here]**
 5. Click the *View Resume* button to view your newly generated resume.
 6. Repeat as needed.
 
-## Screenshots
-
 ## Architectural Diagrams
+
+## Screenshots

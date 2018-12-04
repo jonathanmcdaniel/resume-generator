@@ -270,6 +270,7 @@ export class HomePage {
     this.resumeData['experience'] = [];
     this.resumeData['experience'].push(this.experienceData)
 
+    this.resumeData['skills'] = [];
     this.resumeData['skills'] = this.skillData;
   }
 
@@ -289,7 +290,8 @@ export class HomePage {
   }
 
   viewResume(){
-    window.open("http://10.0.0.85:3000/" + this.pdfUrl, "_blank");
+    let localUrl = this.generateService.getLocalURL();
+    window.open(localUrl + ":3000/" + this.pdfUrl, "_blank");
   }
 
 }
