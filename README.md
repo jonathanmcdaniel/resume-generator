@@ -13,12 +13,9 @@ Video Demo: **[insert link here]**
 1. Download or clone this repo.
 2. Navigate to the repo directory.
 3. Open a Node.js command shell.
-4. Navigate into the app folder `cd app`.
-5. Install mobile app dependencies `npm install`.
-6. Navigate to the webservices folder `cd ../webservice` or `cd ..\webservice` for Windows.
-7. Navigate to the repo root `cd ..`.
-8. Start the project `npm start`.
-9. The mobile app should open in your default web browser.
+4. Run the command `npm run build-start`
+5. The mobile app should open in your default web browser.
+6. Terminate the webservice and the app by using `^C` in the terminal window.
 
 ## Using the Application
 1. Enter desired information in the form on the **Home** tab.

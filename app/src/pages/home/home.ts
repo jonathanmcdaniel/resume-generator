@@ -281,8 +281,13 @@ export class HomePage {
     let resumeDataJSON = JSON.stringify(this.resumeData);
     this.generateService.postResumeData(resumeDataJSON, this.resumeTemplate).subscribe(
       data => this.storeResume(data),
-      error => console.error(error)
+      error => this.showError(error)
     );
+  }
+
+  showError(error) {
+    console.error(error);
+    alert("An error occured while generating your resume. Check the console logs for more information.");
   }
 
   storeResume(data){
