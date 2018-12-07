@@ -3,7 +3,7 @@ Project for SE575 at Drexel University. Generates resumes on demand based on JSO
 
 Author: Jonathan McDaniel
 
-Video Demo: **[insert link here]**
+Video Demo: [Demo on YouTube](https://youtu.be/V_89706jBF8 "Demo Video")
 
 ## Building the Project
 ### Prerequisites
