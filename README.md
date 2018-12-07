@@ -26,16 +26,42 @@ Video Demo: **[insert link here]**
 6. Repeat as needed.
 
 ## Architectural Diagrams
+### Context Diagram
+The context of the system is that a user will use the system to generate resumes based on provided templated. The system depends on a file system to store resumes and templates and a tool called puppeteer to handle the creation of PDFs.
 
-## Screenshots
+![Context Diagram](/images/architecture/context.png)
+
+### Container Diagram
+The resume-generator system consists of two main containers: a mobile application, and a web service. The mobile application is what allows the user to input their information and view their resume once it is generated. The web service does all of the heavy lifting with compiling the data and the actual generation of the resume PDF. A website or API application could also be easily tied to the same web service without modification but they do not exist in the implementation contained in this repository so they are not shown.
+
+![Container Diagram](/images/architecture/container.png)
+
+### Component Diagram
+The following component diagram is actually two component diagrams combined into one view, a componend diagram for the mobile application and another for the web service.
+
+Within the mobile application there are two components that the user will interact with directly. The AboutComponent is strictly informational with a view containing instructions on how to use the system. The HomeComponent provides a view to the user so that they may enter their resume information. The HomeComponent also handles compiling the data provided into JSON and handing this data off to the GenerateService. The GenerateService handles network requests for the system from the mobile application. This includes getting current network information, sending the JSON payload to the appropriate location on the web service, and handling network errors.
+
+On the web service container, the router component takes in all incoming network requests and routes them to the appropriate code. The generate service is where the JSON data is decoded and applied to a Handlebars template which is then translated to HTML from the templating engine component. This generated HTML is then handed to Puppeteer to be saved as a PDF. The Generate Service also handles working with the server file system to load templates and for saving the generated PDF resumes for future use.
+
+![Component Diagram](/images/architecture/component.png)
+
+## Screenshots of the Application
 ### Data Collection Used in Generation
+This image shows what the complete data collection form looks like.
+
 ![Full Data Collection Form](/images/screenshots/full_form.png)
 
 ### Allow User to Choose Template Before Generation
+Shows the UI that is used to allow the user to select which template they would like to use for their resume before it is generated.
+
 ![Choose Resume Template](/images/screenshots/choose_template.PNG)
 
 ### Basic Resume Template
+One of the generated resumes. This is from the basic template.
+
 ![Generated Resume Basic](/images/screenshots/generated_resume_basic.PNG)
 
 ### Red Resume Template
+One of the generated resumes. This is from the red template.
+
 ![Generated Resume Red](/images/screenshots/generated_resume_red.PNG)
